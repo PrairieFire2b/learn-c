@@ -1,6 +1,36 @@
 #include <stdio.h>
 
-#define learn_typeof(x) _Generic(                \
+#define learn_typeof(x) _Generic(           \
+    (x),                                    \
+    char: char,                             \
+    unsigned char: unsigned char,           \
+    short: short,                           \
+    unsigned short: unsigned short,         \
+    int: int,                               \
+    unsigned int: unsigned int,             \
+    long long: long long,                   \
+    unsigned long long: unsigned long long, \
+    float: float,                           \
+    double: double,                         \
+    long double: long double                \
+)                                           \
+ 
+#define learn_typenameof(x) _Generic(         \
+    (x),                                      \
+    char: "char",                             \
+    unsigned char: "unsigned char",           \
+    short: "short",                           \
+    unsigned short: "unsigned short",         \
+    int: "int",                               \
+    unsigned int: "unsigned int",             \
+    long long: "long long",                   \
+    unsigned long long: "unsigned long long", \
+    float: "float",                           \
+    double: "double",                         \
+    long double: "long_double"                \
+)                                             \
+
+#define learn_typenameof_function(x) _Generic(   \
     (x),                                         \
     char: char_name,                             \
     unsigned char: unsigned_char_name,           \
@@ -14,7 +44,7 @@
     double: double_name,                         \
     long double: long_double_name                \
 )(x)                                             \
- 
+
 
 char* char_name() { return "char"; }
 
@@ -26,7 +56,8 @@ char* unsigned_short_name() { return "unsigned short"; }
 
 char* int_name() { return "int"; }
 
-char* unsigned_int_name() { return "unsigned int";  
+char* unsigned_int_name() { return "unsigned int"; }
+
 char* long_long_name() { return "long long"; }
 
 char* unsigned_long_long_name() { return "unsigned long long"; }
