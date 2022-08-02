@@ -1,3 +1,6 @@
+#ifndef __cplusplus
+#include <stdbool.h>
+#endif
 #include <stdio.h>
 
 #define learn_print_function(x) _Generic(         \
@@ -14,7 +17,8 @@
     float: float_print,                           \
     double: double_print,                         \
     long double: long_double_print,               \
-    void*: pointer_print                          \
+    void*: pointer_print,                         \
+    bool: bool_print                              \
 )(x)
 
 #define learn_typeof(x) _Generic(           \
@@ -110,3 +114,5 @@ void double_print(double x) { printf("%f", x); }
 void long_double_print(long double x) { printf("%Lf", x); }
 
 void pointer_print(void* x) { printf("%p", x); }
+
+void bool_print(bool x) { printf(x == true ? "true" : "false"); }
