@@ -44,7 +44,7 @@
     unsigned long long: "unsigned long long", \
     float: "float",                           \
     double: "double",                         \
-    long double: "long_double"                \
+    long double: "long double"                \
 )
 
 #define learn_typenameof_function(x) _Generic(   \
